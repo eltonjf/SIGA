@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>SistemaAC</title>
+
+        <link rel="shortcut icon" type="image/x-icon" href="#{facesContext.externalContext.requestContextPath}/resources/images/favicon.ico" />
+        
+        <!--Template da Algaworks-->
+	<h:outputStylesheet library="algaworks" name="styles/custom.css" />
+	<h:outputStylesheet library="algaworks" name="styles/layout.css" />
+	<h:outputStylesheet library="algaworks" name="styles/components.css" />
+        
+	<h:outputStylesheet library="css" name="estilo.css" />
+	<h:outputStylesheet library="css" name="primefaces.css" />
+
+        <h:outputStylesheet library="font-awesome-4.7.0" name="css/font-awesome.css" />
+        
+	<h:outputScript library="jquery" name="jquery-2.2.0.min.js" />
+	
+        <script>
+            $a = jQuery.noConflict();
+            $a(document).ready(function() {
+                var heightWindow = $a(window).height();
+                var heightBody   = document.body.clientHeight;
+                if(heightWindow > heightBody){
+                    $a("#footer").css('position', 'fixed');
+                    $a("#footer").css('bottom', '0');
+                }                
+            });
+        </script>
+        
+    </h:head>
+
+    <h:body>
+
+        <header class="aw-topbar">
+            <p:graphicImage library="images" name="logo_topo.jpg" id="logoMenu"/>
+            <a href="#" class="aw-toggle js-toggle"><i class="fa fa-bars fa-2x"></i></a>
+        </header>
+
+        <aside class="aw-sidebar  js-sidebar">
+                <ui:include src="Menu.xhtml" />
+        </aside>
+
+        <section class="aw-content  js-content">
+                <ui:insert name="content" />
+        </section>
+
+         <div id="footer" role="footer">
+            <ui:insert name="nav_footer">
+                <ui:include src="footer.xhtml" />
+            </ui:insert>
+         </div>
+
+        <h:outputScript target="body" library="algaworks" name="javascripts/app.js" />
+    </h:body>
+
+</html>
